@@ -6,60 +6,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
 	<style type="text/css">
-		.container{
-			max-width: 530px;
-		}
-		#content {
-			width: 500px;
-			background: #fff;
-			height: 500px;
-			border-radius: 5px;
-			border: 2px solid#cecece;
-			padding: 20px;
-			font-size: 15px;
-			overflow-y: auto;
-		}
-		.btn_area{
-			margin: 10px;
-			float: right;
-		}
-		.text_area, .button_area{
-			padding:10px;
-		}
-		div.my_msg {
-			text-align: right;
-			padding: 5px;
-			float: right;
-			width: 100%
-		}
-		div.users_msg {
-			text-align: left;
-			padding: 5px;
-			float: left;
-			width: 100%;
-		}
-		.my_msg div.inner-content {
-			float: right;
-			padding: 10px;
-			background-color: #c5eacc;
-			border-radius: 20PX;
-			min-width: 100px;
-		}
-		.users_msg div.inner-content {
-			float: left;
-			padding: 10px;
-			background-color: #c5d9ea;
-			border-radius: 20PX;
-			min-width: 100px;
-		}
-		.content-name, .content-msg {
-			text-align: left; 
-			word-break: break-word;
-		}
+		
 
 	</style>
 
@@ -108,8 +60,10 @@
 				var content = $('#content');
 				if(response.name == user_name.val()){					
 					content.append("<div class='my_msg'><div class='inner-content'><div class='content-name'>"+response.name+" : </div> <div class='content-msg'>"+response.msg+"</div></div></div>")
+					content.prop("scrollTop", content.prop("scrollHeight"));
 				}else{
 					content.append("<div class='users_msg'><div class='inner-content'><div class='content-name'>"+response.name+" : </div> <div class='content-msg'>"+response.msg+"</div></div></div>")
+					content.prop("scrollTop", content.prop("scrollHeight"));
 				}
 			})
 

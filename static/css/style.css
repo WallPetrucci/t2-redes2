@@ -1,0 +1,50 @@
+.container{
+	max-width: 530px;
+}
+#content {
+	width: 500px;
+	background: #fff;
+	height: 500px;
+	border-radius: 5px;
+	border: 2px solid#cecece;
+	padding: 20px;
+	font-size: 15px;
+	overflow-y: scroll;
+}
+.btn_area{
+	margin: 10px;
+	float: right;
+}
+.text_area, .button_area{
+	padding:10px;
+}
+div.my_msg {
+	text-align: right;
+	padding: 5px;
+	float: right;
+	width: 100%
+}
+div.users_msg {
+	text-align: left;
+	padding: 5px;
+	float: left;
+	width: 100%;
+}
+.my_msg div.inner-content {
+	float: right;
+	padding: 10px;
+	background-color: #c5eacc;
+	border-radius: 20PX;
+	min-width: 100px;
+}
+.users_msg div.inner-content {
+	float: left;
+	padding: 10px;
+	background-color: #c5d9ea;
+	border-radius: 20PX;
+	min-width: 100px;
+}
+.content-name, .content-msg {
+	text-align: left; 
+	word-break: break-word;
+}
