@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+	<title>Redes 2</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-	<style type="text/css">
-		
-
-	</style>
-
 	<div class="container">
-		<div class="row chat_area">	
+		<div class="row chat_area">
 			<div class="col-12">
-				<div id="content">	
+				<h2 class="title">Sistema para colar em provas</h2>
+				<div id="content">
 
-				</div>				
-			</div>	
+				</div>
+			</div>
 		</div>
 		<div class="row text_area">
 			<div class="form-group">
-				<input type="text" class="form-control" id="user_name" aria-describedby="emailHelp" placeholder="Entre com nome">
-			</div>		
+				<input type="text" class="form-control" id="user_name" aria-describedby="emailHelp"
+					placeholder="Entre com nome">
+			</div>
 		</div>
 		<div class="input-group mb-3">
-			<input id="message_user" type="text" class="form-control" placeholder="Digite sua Mensagem" aria-label="Recipient's username" aria-describedby="button-addon2">
+			<input id="message_user" type="text" class="form-control" placeholder="Digite sua Mensagem"
+				aria-label="Recipient's username" aria-describedby="button-addon2">
 			<div class="input-group-append">
 				<button class="btn btn-outline-secondary" type="button" id="btn_send_message">Enviar</button>
 			</div>
@@ -37,37 +37,7 @@
 	</div>
 
 
-	<script type="text/javascript" charset="utf-8">
-
-		$(document).ready(function(){
-			var socket = io.connect('http://' + document.domain + ':' + location.port);
-			var btn = $('#btn_send_message');
-			var mess = $('#message_user');
-			var user_name = $('#user_name');
-
-			socket.on('connect', function() {
-				socket.emit('join', {})
-			});
-
-			btn.on('click', function(){
-				console.log("Clicou")								
-				socket.emit('send_msg', {name: user_name.val(), msg: mess.val()});
-				mess.val('');
-			})
-
-			socket.on('response_event', function(response){
-				console.log("Teste" + response)
-				var content = $('#content');
-				if(response.name == user_name.val()){					
-					content.append("<div class='my_msg'><div class='inner-content'><div class='content-name'>"+response.name+" : </div> <div class='content-msg'>"+response.msg+"</div></div></div>")
-					content.prop("scrollTop", content.prop("scrollHeight"));
-				}else{
-					content.append("<div class='users_msg'><div class='inner-content'><div class='content-name'>"+response.name+" : </div> <div class='content-msg'>"+response.msg+"</div></div></div>")
-					content.prop("scrollTop", content.prop("scrollHeight"));
-				}
-			})
-
-		});
-	</script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}" charset="utf-8"></script>
 </body>
+
 </html>

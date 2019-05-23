@@ -17,6 +17,7 @@
 }
 .text_area, .button_area{
 	padding:10px;
+	padding-left: 16px;
 }
 div.my_msg {
 	text-align: right;
@@ -47,4 +48,9 @@ div.users_msg {
 .content-name, .content-msg {
 	text-align: left; 
 	word-break: break-word;
+}
+
+h2.title{
+	text-align: center;
+    font-weight: 600;
 }

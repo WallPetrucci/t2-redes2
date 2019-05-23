@@ -1,5 +1,5 @@
 # Trabalhando com SOCKET.IO (Flask)
-<p>Autores: Higor Freitas de Oliveira() e Wallace Petrucci Neves(95441)</p>
+<p>Autores: Higor Freitas de Oliveira(93957) e Wallace Petrucci Neves(95441)</p>
 <p>Faculdade: FHO - Fundação Herminio Ometto - Uniararas</p>
 
 Trabalho feito em Javascript(jQuery) + Python(Flask), criando um chat com Socket.IO.
