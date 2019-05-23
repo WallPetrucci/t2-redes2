@@ -15,7 +15,7 @@ def joined(data):
 
 @socketio.on('send_msg')
 def handle_message(data, methods=['GET', 'POST']):
-    print(data)
+    data['msg'] = data['msg'].encode('latin-1').decode('utf-8')
     emit("response_event", data, room=SALA)
 
 

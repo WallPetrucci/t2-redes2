@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     let socket = io.connect(`http://${document.domain}:${location.port}`);
     let btn = $('#btn_send_message');
