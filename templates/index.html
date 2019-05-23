@@ -4,19 +4,77 @@
 	<title></title>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
+
 <body>
+	<style type="text/css">
+		.container{
+			max-width: 530px;
+		}
+		#content {
+			width: 500px;
+			background: #fff;
+			height: 500px;
+			border-radius: 5px;
+			border: 2px solid#cecece;
+			padding: 20px;
+			font-size: 15px;
+			overflow-y: auto;
+		}
+		.btn_area{
+			margin: 10px;
+			float: right;
+		}
+		.text_area, .button_area{
+			padding:10px;
+		}
+		div.my_msg {
+			text-align: right;
+			padding: 5px;
+			float: right;
+			width: 100%
+		}
+		div.users_msg {
+			text-align: left;
+			padding: 5px;
+			float: left;
+			width: 100%;
+		}
+		.my_msg div {
+			float: right;
+			padding: 10px;
+			background-color: #c5eacc;
+			border-radius: 50PX;
+		}
+		.users_msg div {
+			float: left;
+			padding: 10px;
+			background-color: #c5eacc;
+			border-radius: 50PX;
+		}
 
-	<div>
-		<div id="content">	
-			<input type="text" name="user_name" id="user_name">
-			<textarea id="message_user">
+	</style>
 
-			</textarea>
-			<input type="button" name="btn_send_message" id="btn_send_message">
+	<div class="container">
+		<div class="row chat_area">	
+			<div class="col-12">
+				<div id="content">	
+
+				</div>				
+			</div>	
 		</div>
-		<div id="content">	
-
+		<div class="row text_area">
+			<div class="form-group">
+				<input type="text" class="form-control" id="user_name" aria-describedby="emailHelp" placeholder="Entre com nome">
+			</div>		
+		</div>
+		<div class="input-group mb-3">
+			<input id="message_user" type="text" class="form-control" placeholder="Digite sua Mensagem" aria-label="Recipient's username" aria-describedby="button-addon2">
+			<div class="input-group-append">
+				<button class="btn btn-outline-secondary" type="button" id="btn_send_message">Enviar</button>
+			</div>
 		</div>
 	</div>
 
@@ -42,7 +100,11 @@
 			socket.on('response_event', function(response){
 				console.log("Teste" + response)
 				var content = $('#content');
-				content.append(response.name+" : "+response.msg+"<br>")
+				if(response.name == user_name.val()){					
+					content.append("<div class='my_msg'><div>"+response.name+" : "+response.msg+"</div></div>")
+				}else{
+					content.append("<div class='users_msg'><div>"+response.name+" : "+response.msg+"</div></div>")
+				}
 			})
 
 		});
