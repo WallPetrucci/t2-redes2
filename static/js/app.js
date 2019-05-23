@@ -10,13 +10,11 @@ $(document).ready(function () {
     });
 
     btn.on('click', function () {
-        console.log("Clicou")
         socket.emit('send_msg', { name: user_name.val(), msg: mess.val() });
         mess.val('');
     })
 
     socket.on('response_event', function (response) {
-        console.log("Teste" + response)
         let content = $('#content');
         if (response.name == user_name.val()) {
             content.append(`<div class='my_msg'><div class='inner-content'><div class='content-name'>${response.name} : </div> <div class='content-msg'>${response.msg}</div></div></div>`)
